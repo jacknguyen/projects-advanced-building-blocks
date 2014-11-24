@@ -18,5 +18,13 @@ module Enumerable
     self
   end
 
-
+  def my_select
+    output = Array.new
+    self.my_each do |x|
+      if yield(x)
+        output << x
+      end
+    end
+    output
+  end
 end
