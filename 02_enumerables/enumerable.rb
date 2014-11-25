@@ -67,11 +67,18 @@ module Enumerable
   end
 
   def my_map(a_proc)
-    output = Array.new
+    @output = Array.new
     self.my_each do |x|
-      output << a_proc.call(x)
+      @output << a_proc.call(x)
     end
-    output
+    if a_proc
+      block_arr = Array.new
+      @output.my_each do |x|
+        block_arr << yield(x)
+      end
+      @output = block_arr
+    end
+    @output
   end
 
   def my_inject(ini=nil)
