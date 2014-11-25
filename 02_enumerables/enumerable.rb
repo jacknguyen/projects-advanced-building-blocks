@@ -59,9 +59,17 @@ module Enumerable
   end
 
   def my_count
-    output =0
+    output = 0
     self.my_each do |x|
       output += 1
+    end
+    output
+  end
+
+  def my_map
+    output = Array.new
+    self.my_each do |x|
+      output << yield(x)
     end
     output
   end
