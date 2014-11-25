@@ -73,4 +73,24 @@ module Enumerable
     end
     output
   end
+
+  def my_inject(ini=nil)
+    output = ini if ini
+    self.my_each do |x|
+      if output
+        output = yield(output, x)
+      else
+        output = x
+      end
+    end
+    output
+  end
+end
+
+def multiply_els arr
+  output = 1
+  arr.my_each do |x|
+    output *= x
+  end
+  output
 end
