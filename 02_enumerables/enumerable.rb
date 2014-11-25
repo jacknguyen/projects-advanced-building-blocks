@@ -66,10 +66,10 @@ module Enumerable
     output
   end
 
-  def my_map
+  def my_map(a_proc)
     output = Array.new
     self.my_each do |x|
-      output << yield(x)
+      output << a_proc.call(x)
     end
     output
   end
